@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services - ONGOIBA DISTRIBUTION</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css"> 
+
+    <style>
+        /* Variables CSS (Répétées pour la clarté) */
+        :root {
+            --primary-color: #004a8f;
+            --secondary-color: #ffaa00;
+            --text-color: #333;
+            --light-bg: #f4f4f4;
+            --dark-bg: #222;
+        }
+
+        /* Bannière de la page */
+        .page-hero-service {
+            background: linear-gradient(rgba(0, 74, 143, 0.8), rgba(0, 74, 143, 0.8)), url('assets/service-banner.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .page-hero-service h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .page-hero-service p {
+            font-size: 1.2em;
+        }
+        
+        /* Styles des Catégories de Services (Cards Modernes) */
+        .service-category {
+            padding: 40px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .service-category:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
+        .service-category h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+        }
+
+        .service-category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center; /* Assure que le contenu est aligné verticalement */
+        }
+        
+        .service-info {
+            padding: 20px;
+        }
+        
+        .service-info h3 {
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .service-info ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        
+        .service-info ul li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ccc;
+            font-size: 1.05em;
+        }
+        
+        .service-info ul li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .service-image-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .service-image-container img:hover {
+            transform: scale(1.05); /* Effet d'attraction */
+        }
+
+        /* Inversion pour les sections paires (design plus dynamique) */
+        .service-category:nth-child(even) .service-category-grid {
+            direction: rtl; /* Inverse l'ordre des colonnes */
+        }
+        
+        .service-category:nth-child(even) .service-info {
+            direction: ltr; /* Remet le texte dans le bon sens */
+            text-align: right;
+        }
+        
+        .service-category:nth-child(even) .service-info ul li i {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+
+        /* Section CTA (Appel à l'action) */
+        .cta-section {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+        
+        .cta-section h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .btn-cta {
+            background: white;
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-cta:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Media Queries pour la réactivité */
+        @media (max-width: 900px) {
+             .service-category-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-category:nth-child(even) .service-category-grid {
+                direction: ltr; /* Désactive l'inversion en mobile */
+            }
+            .service-category:nth-child(even) .service-info {
+                text-align: left;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <a href="accueil.html" class="logo"></a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="ongoiba.html">ONGOIBA DISTRIBUTION</a></li>
+                    
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        </div>
+    </header>
+
+    <section class="page-hero-service">
+        <div class="container">
+            <h1>Services de Distribution Sur Mesure</h1>
+            <p>Notre gamme complète de solutions logistiques garantit l'efficacité et la fiabilité de votre chaîne d'approvisionnement.</p>
+        </div>
+    </section>
+
+    <section id="transport" class="service-category">
+        <div class="container">
+            <h2>Logistique et Fret International</h2>
+            <div class="service-category-grid">
+                
+                <div class="service-image-container">
+                    <img src="logo.png" alt="Flotte de transport et logistique">
+                </div>
+                
+                <div class="service-info">
+                    <h3>Solutions Terrestres, Maritimes et Aériennes</h3>
+                    <p>Nous gérons le mouvement de vos marchandises du point A au point Z, avec une couverture mondiale et une expertise locale.</p>
+                    <ul>
+                        <li><i class="fas fa-route"></i> Fret routier : LTL et FTL optimisés.</li>
+                        <li><i class="fas fa-ship"></i> Fret maritime : Conteneurs complets ou groupage.</li>
+                        <li><i class="fas fa-plane"></i> Fret aérien : Solutions rapides pour les envois urgents.</li>
+                        <li><i class="fas fa-globe-africa"></i> Dédouanement et documentation internationale.</li>
+                    </ul>
+                    <a href="accueil.html#contact" class="btn-primary">Obtenir un Devis Fret</a>
+                </div>
+            </div>
+        </div>
+    </section>

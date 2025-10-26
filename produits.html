@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue Produits - ONGOIBA DISTRIBUTION</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Variables CSS (assurez-vous qu'elles sont définies dans style.css ou répétez-les ici si style.css est omis) */
+        :root {
+            --primary-color: #004a8f;
+            --secondary-color: #ffaa00;
+            --text-color: #333;
+            /* ... autres variables de style.css ... */
+        }
+        
+        /* Bannière de la page */
+        .page-hero {
+            background: var(--primary-color);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        /* Contrôles (Filtres et Recherche) */
+        .catalogue-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .catalogue-controls select, 
+        .catalogue-controls input[type="text"] {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+            max-width: 300px;
+            transition: border-color 0.3s;
+        }
+
+        .catalogue-controls input[type="text"]:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+
+        /* Grille du Catalogue */
+        .product-catalogue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* Carte Produit Attirante */
+        .product-card-page {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card-page:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card-page:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Tags (Nouveau, Meilleur Vente) */
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 10px;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.8em;
+            z-index: 5;
+        }
+
+        .product-tag.new { background-color: #28a745; }
+        .product-tag.best { background-color: var(--secondary-color); }
+
+
+        .product-details {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-details h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .product-description {
+            font-size: 0.9em;
+            color: #666;
+            margin: 10px 0 15px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .features-list li {
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .features-list i {
+            color: var(--secondary-color);
+            margin-right: 8px;
+        }
+
+        .product-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: auto;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn-detail {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .btn-detail:hover {
+            background: #e69500;
+        }
+
+        /* Media Query pour la réactivité */
+        @media (max-width: 600px) {
+            .catalogue-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .catalogue-controls select, 
+            .catalogue-controls input[type="text"] {
+                max-width: 100%;
+            }
+            .product-catalogue-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <a href="ongoiba.html" class="logo">ONGOIBA DISTRIBUTION</a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html#accueil">Accueil</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="produits.html" class="current">Produits</a></li>
+                    <li><a href="index.html#propos">À Propos</a></li>
+                    <li><a href="index.html#contact" class="btn-contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Notre Catalogue de Distribution</h1>
+            <p>Découvrez la qualité et l'efficacité de nos produits logistiques et services associés.</p>
+        </div>
+    </section>
+
+    <section id="catalogue" class="section-padding">
+        <div class="container">
+            
+            <div class="catalogue-controls">
+                <select id="category-filter">
+                    <option value="all">Toutes Catégories</option>
+                    <option value="entrepots">Équipement Entrepôt</option>
+                    <option value="transport">Solutions Transport</option>
+                    <option value="technologie">Technologie & Suivi</option>
+                </select>
+                <input type="text" id="search-bar" placeholder="Rechercher un produit...">
+            </div>
+
+            <div id="product-list-page" class="product-catalogue-grid">
+                
+                <div class="product-card-page" data-category="entrepots">
+                    <div class="product-image-container">
+                        <img src="t.jpg" alt="Chariot élévateur haut de gamme">
+                        <span class="product-tag new">Nouveau</span>
+                    </div>
+                    <div class="product-details">
+                        <h2>Chariot Élévateur Électrique</h2>
+                        <p class="product-description">Modèle éco-énergétique, capacité 3 tonnes, idéal pour les entrepôts modernes. Maintenance incluse.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-bolt"></i> Électrique & Silencieux</li>
+                            <li><i class="fas fa-shield-alt"></i> Sécurité Optimale</li>
+                        </ul>
+                        <span class="product-price">Prix sur Devis</span>
+                        <button class="btn-detail" onclick="alert('Demande de devis pour Chariot Élévateur envoyée!')"><i class="fas fa-envelope"></i> Demander Devis</button>
+                    </div>
+                </div>
+                
+                <div class="product-card-page" data-category="technologie">
+                    <div class="product-image-container">
+                        <img src="u.jpg" alt="Logiciel de gestion d'entrepôt (WMS)">
+                        <span class="product-tag best">Meilleur Vente</span>
+                    </div>
+                    <div class="product-details">
+                        <h2>Logiciel WMS Intégré</h2>
+                        <p class="product-description">Système de gestion d'entrepôt (WMS) avec interface utilisateur intuitive et API pour l'intégration ERP.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-chart-line"></i> Rapports en temps réel</li>
+                            <li><i class="fas fa-cloud"></i> Solution Cloud Sécurisée</li>
+                        </ul>
+                        <span class="product-price">Abonnement Annuel</span>
+                        <button class="btn-detail"><i class="fas fa-cogs"></i> Voir Démo</button>
+                    </div>
+                </div>
+
+                <div class="product-card-page" data-category="transport">
+                    <div class="product-image-container">
+                        <img src="r.jpg" alt="Flotte de camions avec GPS">
+                        <span class="product-tag">Transport</span>
+                    </div>
+                    <div class="product-details">
+                        <h2>Flotte de Camions (Suivi GPS)</h2>
+                        <p class="product-description">Contrat de transport longue distance avec suivi GPS actif 24/7 et assurance complète des marchandises.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-globe"></i> Couverture Nationale</li>
+                            <li><i class="fas fa-route"></i> Optimisation des Itinéraires</li>
+                        </ul>
+                        <span class="product-price">Contrat personnalisé</span>
+                        <button class="btn-detail"><i class="fas fa-phone-alt"></i> Nous Appeler</button>
+                    </div>
+                </div>
+                
+                </div>
+        </div>
+    </section>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h4>ONGOIBA DISTRIBUTION</h4>
+                    <p> BAMAKO, Kalaban Coro, Mali</p>
+                    <p>Téléphone: +223 79-37-84-71</p>
+                    <p>         : +223 65-57-61-39</p>
+                    <p>Email: souleymaneongoiba659@gmail.com</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                       <li><a href="acceuil.html">Accueil</a></li>
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="Apropos.html">À Propos</a></li>
+                       
+                        <li><a href="produits.html">Produits</a></li>
+                    </ul>
+                </div> 
+                <div class="footer-social">
+                    <h4>Suivez-nous</h4>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f">Souleymane ongoiba</i></a><br>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in">Souleymane ongoiba</i></a><br>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter">Souleymane ongoba</i></a><br>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2025 ONGOIBA DISTRIBUTION. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/produits.js"></script> 
+    
+    </body>
+</html>
